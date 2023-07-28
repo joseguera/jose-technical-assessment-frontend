@@ -41,14 +41,12 @@ export default function Product({ item, addToBag, updateItemQty }:ProductProps) 
         border: "1px solid black",
       }}
     >
-      <Link to={`/product/${item.title}`}>
-        <h2>{item.title}</h2>
-      </Link>
       <ImageCarousel item={item} />
-      <p>
-        <span>Price: </span>
-        {item.price}
-      </p>
+      <Link to={`/product/${item.title}`}>
+        <h3>{item.brand}</h3>
+      </Link>
+      <p>{item.title}</p>
+      <p>{item.price}</p>
       <Quantity item={item} qty={qty} getQty={getQty} />
       <p>{item.description}</p>
       <button
