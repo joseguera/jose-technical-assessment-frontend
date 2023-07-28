@@ -57,6 +57,7 @@ export default function Home() {
   return (
     <>
       <BagQty total={Object.keys(cartItems).length} />
+      <div><h2>Explore our latest drops</h2></div>
       <div
         className="App"
         style={{
