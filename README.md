@@ -1,8 +1,15 @@
-# Getting Started with Create React App
+# Things that can be implemented
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Clean up router by using children routes and Outlet element
 
-## Available Scripts
+
+
+
+
+
+
+
+
 
 In the project directory, you can run:
 
