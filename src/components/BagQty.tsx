@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 interface BagQtyProps {
@@ -8,7 +8,7 @@ interface BagQtyProps {
 export default function BagQty(props:BagQtyProps) {
   return (
     <>
-      <Link to="/bag">Cart Total: {props.total}</Link>
+      <Link to="/bag">{props.total}</Link>
     </>
   );
 }

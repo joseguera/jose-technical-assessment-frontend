@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import BagQty from "../components/BagQty";
+import { Link, useOutletContext } from "react-router-dom";
 import Product from "../components/Product";
-import { products } from "../productsAPI";
+import hero from "../assets/images/hero.png"
 
 interface Item {
     id: number;
@@ -13,74 +12,38 @@ interface Item {
     stock: number;
     thumbnail: string;
     images: string[];
+    highlight: string;
     description: string;
     features: string[];
 }
-
-interface HomeState {
+interface BagContext {
+    addToBag: (a: Item, b: number) => void;
+    updateItemQty: (a: Item, b: number) => void;
+    shoppingItems: Array<Item>;
     item: Item;
-    qty: number;
-    addToBag: (a: Item, b: number) => Array<Item>;
-    updateItemQty: (a: Item, b: number) => Array<Item>;
 }
 
 export default function Home() {
-  const [shoppingItems, setShoppingItems] = useState(products);
-  const [cartItems, setCartItems] = useState({});
+    const context: BagContext = useOutletContext();
 
-  function updateItemQty(item:Item, qty:number) {
-    const newQty = shoppingItems.filter((product) => product.id === item.id);
-    const rest = shoppingItems.filter((product) => product.id !== item.id);
-    newQty[0].quantity = qty;
-    const newList = [...rest, newQty[0]];
-    newList.sort((a, b) => a.id - b.id);
-    setShoppingItems(newList);
-  }
-
-  function addToBag(item:Item, qty:number) {
-    let prevQty:number;
-    setCartItems(
-      (prevItems:Array<Item>) => (
-        (prevQty =
-          prevItems[item.id] === undefined ? 0 : prevItems[item.id].quantity),
-        {
-          ...prevItems,
-          [item.id]: {
-            ...item,
-            quantity: qty + prevQty,
-          },
-        }
-      )
+    return (
+        <div className="flex flex-col items-center justify-center mb-24">
+            <div className="w-9/12">
+                    <div className="mt-8"><img src={hero} alt="hero shoe" /></div>
+                <div className="self-start my-8"><h2 className="font-heading font-bold text-2xl">Explore our latest drops</h2></div>
+                <div className="flex justify-center items-center w-full gap-4 mb-8">
+                    {context.shoppingItems.map((item) => {
+                        return (
+                            <Product
+                                key={item.id}
+                                item={item}
+                                addToBag={context.addToBag}
+                                updateItemQty={context.updateItemQty}
+                            />
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
     );
-  }
-
-  return (
-    <>
-      <BagQty total={Object.keys(cartItems).length} />
-      <div><h2>Explore our latest drops</h2></div>
-      <div
-        className="App"
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "100%",
-          height: "100vh",
-          gap: "10px",
-        }}
-      >
-        {shoppingItems.map((item) => {
-          return (
-            <Product
-              key={item.id}
-              item={item}
-              addToBag={addToBag}
-              updateItemQty={updateItemQty}
-            />
-          );
-        })}
-      </div>
-    </>
-  );
 }

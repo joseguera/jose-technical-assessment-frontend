@@ -1,5 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
+import App from "./App";
 import Home from "./routes/Home";
 import Bag from "./routes/Bag";
 import Products from "./routes/Products";
@@ -11,16 +12,22 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: "/bag",
-    element: <Bag />,
-  },
-  {
-    path: "/product/:id",
-    element: <Products />,
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/bag",
+        element: <Bag />,
+      },
+      {
+        path: "/product/:id/:name",
+        element: <Products />,
+      },
+    ],
   },
 ]);
 
