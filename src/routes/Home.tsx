@@ -29,7 +29,7 @@ export default function Home() {
     return (
         <div className="flex flex-col items-center justify-center mb-24">
             <div className="w-9/12">
-                    <div className="mt-8"><img src={hero} alt="hero shoe" /></div>
+                <div className="mt-8"><img className="w-full" src={hero} alt="hero shoe" /></div>
                 <div className="self-start my-8"><h2 className="font-heading font-bold text-2xl">Explore our latest drops</h2></div>
                 <div className="flex justify-center items-center w-full gap-4 mb-8">
                     {context.shoppingItems.map((item) => {
