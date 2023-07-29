@@ -12,6 +12,7 @@ interface Item {
     stock: number;
     thumbnail: string;
     images: string[];
+    highlight: string;
     description: string;
     features: string[];
 }
@@ -23,37 +24,17 @@ interface ProductProps {
 }
 
 export default function Product({ item, addToBag, updateItemQty }:ProductProps) {
-  const [qty, setQty] = useState(0)
-
-  function getQty (newQty:number) {
-    setQty(newQty)
-  }
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        width: "400px",
-        height: "400px",
-        border: "1px solid black",
-      }}
-    >
-      <ImageCarousel item={item} />
-      <Link to={`/product/${item.title}`}>
-        <h3>{item.brand}</h3>
+    <div className="w-1/4 flex flex-col gap-3 items-start justify-center hover:drop-shadow-lg active:drop-shadow-xl">
+      <Link to={`/product/${item.id}/${item.title}`} className="hover:cursor-pointer">
+        <img className="w-full h-64" src={item.thumbnail} alt={item.title} />
       </Link>
-      <p>{item.title}</p>
-      <p>{item.price}</p>
-      <Quantity item={item} qty={qty} getQty={getQty} />
-      <p>{item.description}</p>
-      <button
-        onClick={() => {addToBag(item, qty); updateItemQty(item, qty)}}
-      >
-        Add to Cart
-      </button>
+      <Link to={`/product/${item.id}/${item.title}`} className="decoration-0 hover:cursor-pointer hover:underline hover:decoration-2">
+        <h3 className="font-bold text-xl font-heading">{item.brand}</h3>
+        <p className="font-body">{item.title}</p>
+      </Link>
+      <p className="font-bold"><span>$</span>{item.price}</p>
     </div>
   );
 }

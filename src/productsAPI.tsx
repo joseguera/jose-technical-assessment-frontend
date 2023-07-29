@@ -8,6 +8,7 @@ interface ProductsItem {
   stock: number;
   thumbnail: string;
   images: string[];
+  highlight: string;
   description: string;
   features: string[];
 }
@@ -25,8 +26,8 @@ export const products: Array<ProductsItem> = [
       productImages.product_1_1,
       productImages.product_1_2,
       productImages.product_1_3,
-      productImages.product_1_4
     ],
+    highlight: productImages.product_1_4,
     description: "Energize your look with a fresh take on heritage adidas style. The adidas Daily 3.0 Shoes cut a classic profile with a modern suede upper. Your walk across campus or commute across town has never looked or felt this good.",
     features: ["Regular fit", "Lace closure", "Rubber outsole with vulcanized look", "Imported"]
   },
@@ -41,9 +42,9 @@ export const products: Array<ProductsItem> = [
     images: [
       productImages.product_2_1,
       productImages.product_2_2,
-      productImages.product_2_3,
-      productImages.product_2_4
+      productImages.product_2_3
     ],
+    highlight: productImages.product_2_4,
     description: "Energize your look with a fresh take on heritage adidas style. The adidas Daily 3.0 Shoes cut a classic profile with a modern suede upper. Your walk across campus or commute across town has never looked or felt this good.",
     features: ["Regular fit", "Lace closure", "Rubber outsole with vulcanized look", "Imported"]
   },
@@ -59,8 +60,8 @@ export const products: Array<ProductsItem> = [
       productImages.product_3_1,
       productImages.product_3_2,
       productImages.product_3_3,
-      productImages.product_3_4
     ],
+    highlight: productImages.product_3_4,
     description:
       "Energize your look with a fresh take on heritage adidas style. The adidas Daily 3.0 Shoes cut a classic profile with a modern suede upper. Your walk across campus or commute across town has never looked or felt this good.",
     features: ["Regular fit", "Lace closure", "Rubber outsole with vulcanized look", "Imported"]
@@ -77,8 +78,8 @@ export const products: Array<ProductsItem> = [
       productImages.product_4_1,
       productImages.product_4_2,
       productImages.product_4_3,
-      productImages.product_4_4
     ],
+    highlight: productImages.product_4_4,
     description: "Energize your look with a fresh take on heritage adidas style. The adidas Daily 3.0 Shoes cut a classic profile with a modern suede upper. Your walk across campus or commute across town has never looked or felt this good.",
     features: ["Regular fit", "Lace closure", "Rubber outsole with vulcanized look", "Imported"]
   }
